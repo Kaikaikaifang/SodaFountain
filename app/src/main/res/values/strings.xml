@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">SodaFountain</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="third_fragment_label">Third Fragment</string>
+    <string name="forth_fragment_label">Forth Fragment</string>
+    <string name="end_fragment_label">end Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="soda">Soda Fountain</string>
+    <string name="cola">COLA💕</string>
+    <string name="juice">JUICE 💚</string>
+    <string name="coffee">COFFEE 💙</string>
+    <string name="next">请稍等片刻~</string>
+    <string name="have">have a drink🍹</string>
+    <string name="tips">请您选取喜欢的颜色，并放置水杯\n💕：碳酸饮料🍺\n💙：咖啡☕\n💚：果汁🍹</string>
+    <string name="thank">thanks for using!👋</string>
+
+    <string name="SerialPortSettingsTitle">Serial Port Assistant</string>
+    <string name="backButtonText">Back</string>
+    <string name="sendButtonLabel">Send</string>
+    <string name="CommDataViewTitle">Serial Port Assistant</string>
+    <string name="fromDataLabel">Data received:</string>
+    <string name="toDataLabel">Text to Send:</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.hello.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ThirdFragment"
+            app:destination="@id/ThirdFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ForthFragment"
+            app:destination="@id/ForthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.hello.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_EndFragment"
+            app:destination="@id/EndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ThirdFragment"
+        android:name="com.example.hello.ThirdFragment"
+        android:label="@string/third_fragment_label"
+        tools:layout="@layout/fragment_third">
+
+        <action
+            android:id="@+id/action_ThirdFragment_to_EndFragment"
+            app:destination="@id/EndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ForthFragment"
+        android:name="com.example.hello.ForthFragment"
+        android:label="@string/forth_fragment_label"
+        tools:layout="@layout/fragment_forth">
+
+        <action
+            android:id="@+id/action_ForthFragment_to_EndFragment"
+            app:destination="@id/EndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EndFragment"
+        android:name="com.example.hello.EndFragment"
+        android:label="@string/end_fragment_label"
+        tools:layout="@layout/fragment_end">
+
+        <action
+            android:id="@+id/action_EndFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+</navigation>
