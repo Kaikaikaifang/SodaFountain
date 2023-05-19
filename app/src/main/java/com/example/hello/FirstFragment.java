@@ -1,29 +1,29 @@
 package com.example.hello;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-
 import com.example.hello.databinding.FragmentFirstBinding;
-
-import java.util.Arrays;
 import com.friendlyarm.FriendlyThings.HardwareControler;
-import com.friendlyarm.FriendlyThings.BoardType;
-
 import android.os.Handler;
 import android.os.Message;
+import android.widget.AdapterView;
 
-import android.widget.ScrollView;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+
+
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
@@ -77,16 +77,36 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonHave.setOnClickListener(new View.OnClickListener() {
+//        binding.buttonHave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String str = "H";
+//                byte[] data = str.getBytes();
+//                HardwareControler.write(MainActivity.devfd, data);
+//                NavHostFragment.findNavController(FirstFragment.this)
+//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+//            }
+//        });
+        binding.languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onClick(View view) {
-                String str = "have";
-                byte[] data = str.getBytes();
-                HardwareControler.write(MainActivity.devfd, data);
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLanguage = parent.getItemAtPosition(position).toString();
+                if (selectedLanguage.equals("English")) {
+                    binding.textviewSecond.setText("Soda Fountain");
+                    binding.buttonHave.setText("Please choose your favourite color, and put the cup in the right place\n\uD83D\uDC95: cola\uD83C\uDF7A\n\uD83D\uDC99: coffee☕\n\uD83D\uDC9A: juice\uD83C\uDF79");
+                } else {
+                    binding.textviewSecond.setText("智能饮料机");
+                    binding.buttonHave.setText("请您选取喜欢的颜色，并放置水杯\n\uD83D\uDC95：碳酸饮料\uD83C\uDF7A\n\uD83D\uDC99：咖啡☕\n\uD83D\uDC9A：果汁\uD83C\uDF79");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
             }
         });
+
     }
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
@@ -110,9 +130,12 @@ public class FirstFragment extends Fragment {
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_ForthFragment);
                     break;
+                case "D":
+                    NavHostFragment.findNavController(FirstFragment.this)
+                            .navigate(R.id.action_FirstFragment_to_FifthFragment);
+                    break;
                 default:
-                    byte[] d = "In First Fragment.".getBytes();
-                    HardwareControler.write(MainActivity.devfd, d);
+                    break;
             }
         }
     };
@@ -126,4 +149,12 @@ public class FirstFragment extends Fragment {
         timer = null;
         binding = null;
     }
+
 }
+
+
+
+
+
+
+

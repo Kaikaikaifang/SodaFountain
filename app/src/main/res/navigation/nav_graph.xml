@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_ForthFragment"
             app:destination="@id/ForthFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_FifthFragment"
+            app:destination="@id/FifthFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -30,6 +33,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_EndFragment"
             app:destination="@id/EndFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/ThirdFragment"
@@ -40,6 +46,9 @@
         <action
             android:id="@+id/action_ThirdFragment_to_EndFragment"
             app:destination="@id/EndFragment" />
+        <action
+            android:id="@+id/action_ThirdFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/ForthFragment"
@@ -50,6 +59,9 @@
         <action
             android:id="@+id/action_ForthFragment_to_EndFragment"
             app:destination="@id/EndFragment" />
+        <action
+            android:id="@+id/action_ForthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/EndFragment"
@@ -59,6 +71,29 @@
 
         <action
             android:id="@+id/action_EndFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FifthFragment"
+        android:name="com.example.hello.FifthFragment"
+        android:label="@string/fifth_fragment_label"
+        tools:layout="@layout/fragment_fifth">
+
+        <action
+            android:id="@+id/action_FifthFragment_to_AdminFragment"
+            app:destination="@id/AdminFragment" />
+        <action
+            android:id="@+id/action_FifthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AdminFragment"
+        android:name="com.example.hello.AdminFragment"
+        android:label="@string/admin_fragment_label"
+        tools:layout="@layout/fragment_admin">
+
+        <action
+            android:id="@+id/action_AdminFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

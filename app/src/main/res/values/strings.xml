@@ -7,23 +7,43 @@
     <string name="third_fragment_label">Third Fragment</string>
     <string name="forth_fragment_label">Forth Fragment</string>
     <string name="end_fragment_label">end Fragment</string>
+    <string name="fifth_fragment_label">fifth Fragment</string>
+    <string name="admin_fragment_label">admin Fragment</string>
     <string name="previous">Previous</string>
-
+    <string name="language" translatable="false">语言</string>
+    <string-array name="language_values">
+        <item>zh</item>
+        <item>en</item>
+    </string-array>
+    <string-array name="language_entries">
+        <item>中文</item>
+        <item>English</item>
+    </string-array>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="soda">Soda Fountain</string>
-    <string name="cola">COLA💕</string>
-    <string name="juice">JUICE 💚</string>
-    <string name="coffee">COFFEE 💙</string>
+    <string name="soda">智能饮料机</string>
+    <string name="cola">可乐 💕</string>
+    <string name="juice">果汁 💚</string>
+    <string name="coffee">咖啡 💙</string>
     <string name="next">请稍等片刻~</string>
-    <string name="have">have a drink🍹</string>
+    <string name="login">登录</string>
+    <string name="test">调试</string>
+    <string name="have">来一杯饮料🍹</string>
     <string name="tips">请您选取喜欢的颜色，并放置水杯\n💕：碳酸饮料🍺\n💙：咖啡☕\n💚：果汁🍹</string>
-    <string name="thank">thanks for using!👋</string>
-
-    <string name="SerialPortSettingsTitle">Serial Port Assistant</string>
-    <string name="backButtonText">Back</string>
-    <string name="sendButtonLabel">Send</string>
-    <string name="CommDataViewTitle">Serial Port Assistant</string>
-    <string name="fromDataLabel">Data received:</string>
-    <string name="toDataLabel">Text to Send:</string>
+    <string name="thank">感谢使用!👋</string>
+    <string name="admin">维护模式</string>
+    <string name="user">当前用户：admin</string>
+    <string name="test1">一号舵机💿：</string>
+    <string name="message_test1">👉</string>
+    <string name="test2">二号舵机💿：</string>
+    <string name="message_test2">👉</string>
+    <string name="color">颜色传感器🐶：</string>
+    <string name="message_color">👉</string>
+    <string name="length">距离传感器🐱：</string>
+    <string name="margin">余量👀：</string>
+    <string name="message_length">👉</string>
+    <string name="message_margin">👉</string>
+    <string name="Username">用户名：</string>
+    <string name="Password">密码：</string>
+    <string name="home">返回首页</string>
 </resources>

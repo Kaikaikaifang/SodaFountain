@@ -68,10 +68,11 @@ public class EndFragment extends Fragment {
             if (id.equals("E")) {
                 NavHostFragment.findNavController(EndFragment.this)
                         .navigate(R.id.action_EndFragment_to_FirstFragment);
-            } else {
-                byte[] d = "In End Fragment.".getBytes();
-                HardwareControler.write(MainActivity.devfd, d);
             }
+//            } else {
+//                byte[] d = "In End Fragment.".getBytes();
+//                HardwareControler.write(MainActivity.devfd, d);
+//            }
         }
     };
 

@@ -7,16 +7,11 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-
-import com.example.hello.databinding.FragmentSecondBinding;
 import com.example.hello.databinding.FragmentThirdBinding;
 import com.friendlyarm.FriendlyThings.HardwareControler;
-import com.friendlyarm.FriendlyThings.BoardType;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,7 +36,11 @@ public class ThirdFragment extends Fragment {
                 if (res > 0) {
                     res = HardwareControler.read(MainActivity.devfd, buffer, BUFSIZE);
                     if (res > 0) {
+                        String data = new String(buffer, 0, res).trim();
                         Message message = mHandler.obtainMessage();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("message", data);
+                        message.setData(bundle);
                         message.sendToTarget();
                     }
                 }
@@ -62,11 +61,20 @@ public class ThirdFragment extends Fragment {
 
         @Override
         public void handleMessage(Message inputMessage) {
-//            // Runs on the UI thread
-//            NavHostFragment.findNavController(SecondFragment.this)
-//                    .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            byte[] d = "In Juice Fragment.".getBytes();
-            HardwareControler.write(MainActivity.devfd, d);
+            Bundle bundle = inputMessage.getData();
+            String msg = bundle.getString("message");
+            switch (msg) {
+                case "S":
+                    NavHostFragment.findNavController(ThirdFragment.this)
+                            .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                    break;
+                case "N":
+                    NavHostFragment.findNavController(ThirdFragment.this)
+                            .navigate(R.id.action_ThirdFragment_to_EndFragment);
+                    break;
+                default:
+                    break;
+            }
         }
     };
 
@@ -96,7 +104,7 @@ public class ThirdFragment extends Fragment {
         binding.buttonStrawberry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String str = "strawberry";
+                String str = "3";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
                 NavHostFragment.findNavController(ThirdFragment.this)
@@ -107,12 +115,18 @@ public class ThirdFragment extends Fragment {
         binding.buttonGrape.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String str = "grape";
+                String str = "4";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
                 NavHostFragment.findNavController(ThirdFragment.this)
                         .navigate(R.id.action_ThirdFragment_to_EndFragment);
 
+            }
+        });
+        binding.buttonReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HardwareControler.write(MainActivity.devfd, "S".getBytes());
             }
         });
     }

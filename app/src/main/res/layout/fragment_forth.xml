@@ -70,4 +70,17 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ContentDescription,MissingConstraints" />
 
+    <Button
+        android:id="@+id/button_return"
+        android:layout_width="188dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/home"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

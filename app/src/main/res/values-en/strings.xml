@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">SodaFountain</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="third_fragment_label">Third Fragment</string>
+    <string name="forth_fragment_label">Forth Fragment</string>
+    <string name="end_fragment_label">end Fragment</string>
+    <string name="fifth_fragment_label">fifth Fragment</string>
+    <string name="admin_fragment_label">admin Fragment</string>
+    <string name="previous">Previous</string>
+    <string name="language">language</string>
+    <string-array name="language_values">
+        <item>zh</item>
+        <item>en</item>
+    </string-array>
+    <string-array name="language_entries">
+        <item>Chinese</item>
+        <item>English</item>
+    </string-array>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="soda">Soda Fountain</string>
+    <string name="cola">COLA💕</string>
+    <string name="juice">JUICE 💚</string>
+    <string name="coffee">COFFEE 💙</string>
+    <string name="next">Wait a minute ~</string>
+    <string name="login">Login</string>
+    <string name="test">test</string>
+    <string name="have">have a drink🍹</string>
+    <string name="tips">Please choose your favourite color, and put the cup in the right place\n💕: cola🍺\n💙: coffee☕\n💚: juice🍹</string>
+    <string name="thank">thanks for using!👋</string>
+    <string name="admin">Maintenance Mode🛠</string>
+    <string name="user">User 🤡：admin</string>
+    <string name="test1">Servo No. 1 💿: </string>
+    <string name="message_test1">👉</string>
+    <string name="test2">Servo No. 2 ⚙: </string>
+    <string name="message_test2">👉</string>
+    <string name="color">Color sensor🐶：</string>
+    <string name="message_color">👉</string>
+    <string name="length">Distance sensor🐱：</string>
+    <string name="margin">margin👀：</string>
+    <string name="message_length">👉</string>
+    <string name="message_margin">👉</string>
+    <string name="Username">Username: </string>
+    <string name="Password">Password: </string>
+    <string name="home">Return home</string>
+</resources>

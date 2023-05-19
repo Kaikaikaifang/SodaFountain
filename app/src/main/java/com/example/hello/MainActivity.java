@@ -1,37 +1,18 @@
 package com.example.hello;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import com.example.hello.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.friendlyarm.FriendlyThings.HardwareControler;
-import com.friendlyarm.FriendlyThings.BoardType;
-import java.lang.System;
-import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public static int devfd = -1;
-    private AppBarConfiguration appBarConfiguration;
 
     @Override
     public void onDestroy() {
