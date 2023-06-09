@@ -1,5 +1,6 @@
 package com.example.hello;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,9 +24,14 @@ public class SecondFragment extends Fragment {
     private TimerTask task;
     int BUFSIZE = 512;
     byte[] buffer = new byte[BUFSIZE];
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void onResume() {
         super.onResume();
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         // 创建新的 Timer 和 TimerTask 对象
         timer = new Timer();
         task = new TimerTask() {
@@ -53,6 +59,11 @@ public class SecondFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // 取消任务
         task.cancel();
         timer.cancel();
@@ -68,11 +79,9 @@ public class SecondFragment extends Fragment {
                     NavHostFragment.findNavController(SecondFragment.this)
                             .navigate(R.id.action_SecondFragment_to_FirstFragment);
                     break;
-                case "N":
+                default:
                     NavHostFragment.findNavController(SecondFragment.this)
                             .navigate(R.id.action_SecondFragment_to_EndFragment);
-                    break;
-                default:
                     break;
             }
         }
@@ -100,6 +109,7 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.cola);
 
         binding.buttonCoke.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +117,6 @@ public class SecondFragment extends Fragment {
                 String str = "1";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_EndFragment);
-
             }
         });
         binding.buttonSoda.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +125,6 @@ public class SecondFragment extends Fragment {
                 String str = "2";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_EndFragment);
-
             }
         });
         binding.buttonReturn.setOnClickListener(new View.OnClickListener() {

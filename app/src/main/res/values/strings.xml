@@ -40,7 +40,7 @@
     <string name="color">颜色传感器🐶：</string>
     <string name="message_color">👉</string>
     <string name="length">距离传感器🐱：</string>
-    <string name="margin">余量👀：</string>
+    <string name="margin">已出杯数👀：</string>
     <string name="message_length">👉</string>
     <string name="message_margin">👉</string>
     <string name="Username">用户名：</string>

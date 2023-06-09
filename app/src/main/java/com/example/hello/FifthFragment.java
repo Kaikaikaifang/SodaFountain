@@ -1,5 +1,6 @@
 package com.example.hello;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -25,9 +26,14 @@ public class FifthFragment extends Fragment {
     private TimerTask task;
     int BUFSIZE = 512;
     byte[] buffer = new byte[BUFSIZE];
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void onResume() {
         super.onResume();
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         // 创建新的 Timer 和 TimerTask 对象
         timer = new Timer();
         task = new TimerTask() {
@@ -55,6 +61,11 @@ public class FifthFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // 取消任务
         task.cancel();
         timer.cancel();
@@ -90,6 +101,7 @@ public class FifthFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.login);
 
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

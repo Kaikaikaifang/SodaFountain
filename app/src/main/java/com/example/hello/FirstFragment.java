@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -31,6 +32,8 @@ public class FirstFragment extends Fragment {
     private TimerTask task;
     int BUFSIZE = 512;
     byte[] buffer = new byte[BUFSIZE];
+    private MediaPlayer mediaPlayer;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -43,6 +46,9 @@ public class FirstFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         // 创建新的 Timer 和 TimerTask 对象
         timer = new Timer();
         task = new TimerTask() {
@@ -70,6 +76,11 @@ public class FirstFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // 取消任务
         task.cancel();
         timer.cancel();
@@ -87,6 +98,7 @@ public class FirstFragment extends Fragment {
 //                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
 //            }
 //        });
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.welcome);
         binding.languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -133,6 +145,10 @@ public class FirstFragment extends Fragment {
                 case "D":
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_FifthFragment);
+                    break;
+                case "L":
+                    NavHostFragment.findNavController(FirstFragment.this)
+                            .navigate(R.id.action_FirstFragment_to_EndFragment);
                     break;
                 default:
                     break;

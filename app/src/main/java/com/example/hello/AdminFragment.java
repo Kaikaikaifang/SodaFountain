@@ -1,5 +1,6 @@
 package com.example.hello;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -27,9 +28,14 @@ public class AdminFragment extends Fragment {
     byte[] buffer = new byte[BUFSIZE];
     String type = "1";
     boolean done = true;
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void onResume() {
         super.onResume();
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         // 创建新的 Timer 和 TimerTask 对象
         timer = new Timer();
         task = new TimerTask() {
@@ -57,6 +63,11 @@ public class AdminFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // 取消任务
         task.cancel();
         timer.cancel();
@@ -112,6 +123,7 @@ public class AdminFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.admin);
 
         binding.buttonTest1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +173,7 @@ public class AdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (done) {
-                    binding.messageLength.setText("测试中，请等待片刻！");
+                    binding.messageMargin.setText("测试中，请等待片刻！");
                     done = false;
                     type = "6";
                     HardwareControler.write(MainActivity.devfd, type.getBytes());

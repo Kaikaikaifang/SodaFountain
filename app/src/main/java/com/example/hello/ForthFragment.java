@@ -1,5 +1,6 @@
 package com.example.hello;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,9 +24,14 @@ public class ForthFragment extends Fragment {
     private TimerTask task;
     int BUFSIZE = 512;
     byte[] buffer = new byte[BUFSIZE];
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void onResume() {
         super.onResume();
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         // 创建新的 Timer 和 TimerTask 对象
         timer = new Timer();
         task = new TimerTask() {
@@ -53,6 +59,11 @@ public class ForthFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // 取消任务
         task.cancel();
         timer.cancel();
@@ -68,11 +79,9 @@ public class ForthFragment extends Fragment {
                     NavHostFragment.findNavController(ForthFragment.this)
                             .navigate(R.id.action_ForthFragment_to_FirstFragment);
                     break;
-                case "N":
+                default:
                     NavHostFragment.findNavController(ForthFragment.this)
                             .navigate(R.id.action_ForthFragment_to_EndFragment);
-                    break;
-                default:
                     break;
             }
         }
@@ -100,6 +109,7 @@ public class ForthFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.coffee);
 
         binding.buttonLatte.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +117,6 @@ public class ForthFragment extends Fragment {
                 String str = "5";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
-                NavHostFragment.findNavController(ForthFragment.this)
-                        .navigate(R.id.action_ForthFragment_to_EndFragment);
-
             }
         });
         binding.buttonMocha.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +125,6 @@ public class ForthFragment extends Fragment {
                 String str = "6";
                 byte[] data = str.getBytes();
                 HardwareControler.write(MainActivity.devfd, data);
-                NavHostFragment.findNavController(ForthFragment.this)
-                        .navigate(R.id.action_ForthFragment_to_EndFragment);
-
             }
         });
         binding.buttonReturn.setOnClickListener(new View.OnClickListener() {
